@@ -1,13 +1,10 @@
 ##FAQ
-###Why does this exist?
-This starter kit implements best practices like testing, minification, bundling, and so on. It codifies a long list of decisions that you no longer have to make to get rolling. It saves you from the long, painful process of wiring it all together into an automated dev environment and build process. It's also useful as inspiration for ideas you might want to integrate into your current development environment or build process.
 
 ###What do the scripts in package.json do?
 Unfortunately, scripts in package.json can't be commented inline because the JSON spec doesn't support comments, so I'm providing info on what each script in package.json does here.
 
 | **Script** | **Description** |
 |----------|-------|
-| remove-demo | Removes the demo application so you can begin development. |
 | prestart | Runs automatically before start. Calls remove-dist script which deletes the dist folder. This helps remind you to run the build script before committing since the dist folder will be deleted if you don't. ;) |
 | start | Runs tests, lints, starts dev webserver, and opens the app in your default browser. |
 | lint:tools | Runs ESLint on build related JS files. (eslint-loader lints src files via webpack when `npm start` is run) |
@@ -113,6 +110,8 @@ Unfortunately, scripts in package.json can't be commented inline because the JSO
 |webpack-hot-middleware| Use to integrate Webpack's hot reloading support with Browser-sync |
 |webpack-md5-hash| Hash bundles, and use the hash for the filename so that the filename only changes when contents change|
 |yargs| Easily parse command-line arguments |
+|css-modules| Create styles objects from css to map unique classes |
+|react-css-modules| Enable a more advanced way to manage components css class mapping and let it use global and local component classes at same time |
 
 ### Where are the files being served from when I run `npm start`?
 Webpack serves your app in memory when you run `npm start`. No physical files are written. However, the web root is /src, so you can reference files under /src in index.html. When the app is built using `npm run build`, physical files are written to /dist and the app is served from /dist.
@@ -142,20 +141,12 @@ For both of the above methods, a separate sourcemap is generated for debugging S
 ### I don't like the magic you just described above. I simply want to use a CSS file.
 No problem. Reference your CSS file in index.html, and add a step to the build process to copy your CSS file over to the same relative location /dist as part of the build step. But be forwarned, you lose style hot reloading with this approach.
 
-### I just want an empty starter kit.
-This starter kit includes an example app so you can see how everything hangs together on a real app. When you're done reviewing it, run this to remove the demo app:
-
-  `npm run remove-demo`
-
-Don't want to use Redux? See the next question for some steps on removing Redux.
-
 ### Do I have to use Redux?
 Nope. Redux is useful for applications with more complex data flows. If your app is simple, Redux is overkill. Remove Redux like this:
 
- 1. Run `npm run remove-demo`
- 2. Uninstall Redux related packages: `npm uninstall redux react-redux redux-thunk`
- 3. Create a new empty component in /components.
- 4. Call render on the new top level component you created in step 3 in src/api.js.
+ 1. Uninstall Redux related packages: `npm uninstall redux react-redux redux-thunk`
+ 2. Create a new empty component in /components.
+ 3. Call render on the new top level component you created in step 3 in src/api.js.
 
 ### How do I remove React Router?
  1. Uninstall React Router and routing related packages: `npm uninstall --save react-router`
