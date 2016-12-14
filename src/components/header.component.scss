@@ -1,0 +1,98 @@
+@import '../style/_palette.scss';
+@import '../style/_fonts.scss';
+
+.header {
+  height: 70px;
+  background-color: #fff;
+  border-bottom: 1px solid $BORDER;
+  box-shadow: 0px 1px 0px $SHADOW;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 0 20px;
+}
+
+.left,
+.right{
+  flex-direction: column;
+  flex: 1;
+
+  form {
+    display: inline-block;
+  }
+}
+
+.right {
+  text-align: right;
+  display: flex;
+}
+
+.logotype {
+  text-decoration: none;
+  color: $PRIMARY;
+  font-weight: 600;
+}
+
+.search-input-wrapper {
+  position: relative;
+  margin-left: 20px;
+
+  input[type="submit"]{
+    opacity: 0;
+    position: absolute;
+    visibility: hidden;
+    pointer-events: none;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+  }
+
+  label {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    margin-top: -0.5em;
+    padding-left: 25px;
+    text-transform: uppercase;
+    font-family: $ROBOTO;
+    color: $SEARCH_COLOR;
+  }
+
+  i {
+    color: $SEARCH_ICON_COLOR;
+    position: absolute;
+    font-size: 1.2em;
+    z-index: 1;
+    top: 50%;
+    left: 5px;
+    margin-top: -0.5em;
+    pointer-events: none;
+  }
+
+  input[type="text"] {
+    position: relative;
+    cursor: text;
+    border: none;
+    color: $SEARCH_COLOR;
+    padding-left: 25px;
+    line-height: 2;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 3px;
+
+    &:focus {
+
+    }
+
+    &:focus + label,
+    &.notempty + label {
+      display: none;
+    }
+  }
+}
+
+
+.tabs {
+  text-align: left;
+  align-self: flex-end;
+}

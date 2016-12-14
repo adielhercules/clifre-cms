@@ -30,6 +30,7 @@
   "author": "Adiel Hercules",
   "license": "MIT",
   "dependencies": {
+    "google-fonts": "1.0.0",
     "normalize.css": "^5.0.0",
     "object-assign": "4.1.0",
     "react": "15.3.2",

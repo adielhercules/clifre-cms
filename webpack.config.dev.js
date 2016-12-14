@@ -56,7 +56,7 @@ export default {
       {test: /\.svg(\?v=\d+\.\d+\.\d+)?$/, loader: 'url?limit=10000&mimetype=image/svg+xml'},
       {test: /\.(jpe?g|png|gif)$/i, loader: 'file?name=[name].[ext]'},
       {test: /\.ico$/, loader: 'file?name=[name].[ext]'},
-      { test: /(\.scss)$/,
+      { test: /\.component\.scss$/,
         loader: ExtractTextPlugin.extract(
           'style?sourceMap',
           'css?sourceMap&modules&importLoaders=1&localIdentName=[name]__[local]__[hash:base64:5]!sass?sourceMap',
@@ -70,7 +70,11 @@ export default {
           'css'
         )
       },
-      //{test: /(\.css|\.scss)$/, loaders: ['style', 'css?sourceMap', 'postcss', 'sass?sourceMap']},
+      {test: /\.sheet\.scss$/, loader: ExtractTextPlugin.extract(
+        'style?sourceMap',
+        'css?sourceMap!sass?sourceMap',
+        'postcss',
+      )},
       {test: /\.json$/, loader: "json"}
     ]
   },
