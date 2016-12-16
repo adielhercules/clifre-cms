@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router';
 
-export default (props) => {
+const LandingPage = () => {
   return (
     <div>
       <h1>Welcome to CLIFRE</h1>
@@ -9,3 +9,5 @@ export default (props) => {
     </div>
   );
 };
+
+export default LandingPage;

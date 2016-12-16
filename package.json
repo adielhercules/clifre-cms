@@ -30,10 +30,13 @@
   "author": "Adiel Hercules",
   "license": "MIT",
   "dependencies": {
+    "@blueprintjs/core": "1.3.1",
+    "flexboxgrid": "6.3.1",
     "google-fonts": "1.0.0",
     "normalize.css": "^5.0.0",
     "object-assign": "4.1.0",
     "react": "15.3.2",
+    "react-addons-css-transition-group": "15.4.1",
     "react-css-modules": "^4.1.0",
     "react-dom": "15.3.2",
     "react-rangeslider": "^1.0.9",
@@ -41,8 +44,9 @@
     "react-router": "2.8.1",
     "react-router-redux": "4.0.6",
     "redux": "3.6.0",
-    "redux-thunk": "2.1.0",
-    "style-loader": "^0.13.1"
+    "redux-create-reducer": "^1.1.1",
+    "redux-router": "2.1.2",
+    "redux-thunk": "2.1.0"
   },
   "devDependencies": {
     "autoprefixer": "6.5.1",

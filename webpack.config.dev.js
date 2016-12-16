@@ -59,9 +59,7 @@ export default {
       { test: /\.component\.scss$/,
         loader: ExtractTextPlugin.extract(
           'style?sourceMap',
-          'css?sourceMap&modules&importLoaders=1&localIdentName=[name]__[local]__[hash:base64:5]!sass?sourceMap',
-          'postcss',
-          //'sass?sourceMap'
+          'css?sourceMap&modules&importLoaders=1&localIdentName=[name]__[local]__[hash:base64:5]!postcss!sass?sourceMap',
         )
       },
       {
@@ -72,8 +70,7 @@ export default {
       },
       {test: /\.sheet\.scss$/, loader: ExtractTextPlugin.extract(
         'style?sourceMap',
-        'css?sourceMap!sass?sourceMap',
-        'postcss',
+        'css?sourceMap!postcss!sass?sourceMap',
       )},
       {test: /\.json$/, loader: "json"}
     ]

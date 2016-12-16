@@ -4,12 +4,17 @@
 .header {
   height: 70px;
   background-color: #fff;
-  border-bottom: 1px solid $BORDER;
-  box-shadow: 0px 1px 0px $SHADOW;
+  box-shadow: 0 0 0 1px rgba(16, 22, 26, 0.1), 0 1px 1px rgba(16, 22, 26, 0.2);
   display: flex;
   flex-direction: row;
   align-items: center;
   padding: 0 20px;
+
+  [class*='container'] {
+    flex: 1;
+    align-items: center;
+    display: flex;
+  }
 }
 
 .left,
@@ -28,14 +33,22 @@
 }
 
 .logotype {
-  text-decoration: none;
-  color: $PRIMARY;
   font-weight: 600;
+
+  &,
+  &:hover {
+    color: $PRIMARY;
+    text-decoration: none;
+  }
 }
 
 .search-input-wrapper {
   position: relative;
   margin-left: 20px;
+
+  @media screen and (max-width: 600px) {
+    display: none;
+  }
 
   input[type="submit"]{
     opacity: 0;
@@ -51,20 +64,21 @@
     position: absolute;
     top: 50%;
     left: 0;
-    margin-top: -0.5em;
+    margin-top: -0.6em;
     padding-left: 25px;
     text-transform: uppercase;
     font-family: $ROBOTO;
     color: $SEARCH_COLOR;
+    cursor: text;
   }
 
-  i {
+  span {
     color: $SEARCH_ICON_COLOR;
     position: absolute;
-    font-size: 1.2em;
+    font-size: 0.8em;
     z-index: 1;
     top: 50%;
-    left: 5px;
+    left: 8px;
     margin-top: -0.5em;
     pointer-events: none;
   }
@@ -73,7 +87,7 @@
     position: relative;
     cursor: text;
     border: none;
-    color: $SEARCH_COLOR;
+    color: $SEARCH_ICON_COLOR;
     padding-left: 25px;
     line-height: 2;
     -webkit-border-radius: 3px;
@@ -81,7 +95,10 @@
     border-radius: 3px;
 
     &:focus {
-
+      outline: none;
+      box-shadow: 0 0 0 1px #137cbd,
+                  0 0 0 3px rgba(19, 124, 189, 0.3),
+                  inset 0 1px 1px rgba(16, 22, 26, 0.2)
     }
 
     &:focus + label,
@@ -95,4 +112,108 @@
 .tabs {
   text-align: left;
   align-self: flex-end;
+
+  ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    display: flex;
+
+    li {
+      display: inline-block;
+
+      &.menu-item {
+        @media screen and (max-width: 800px) {
+          display: none;
+        }
+      }
+
+      &.mobile-menu {
+        display: none;
+
+        @media screen and (max-width: 800px) {
+          display: inherit;
+        }
+
+        [class*="pt-popover-target"] {
+          align-self: center;
+        }
+      }
+
+      &.separator {
+        position: relative;
+        height: 25px;
+        width: 1px;
+        background-color: #dfdfdf;
+        align-self: center;
+        margin: 0 15px;
+      }
+
+      &.user-menu {
+        position: relative;
+        align-self: center;
+      }
+
+      > a {
+        display: block;
+        padding: 24px 10px;
+        color: $TAB_LINK_COLOR;
+        text-decoration: none;
+        border-bottom: 3px solid transparent;
+
+        &:hover,
+        &:focus {
+          color: darken($TAB_LINK_COLOR, 20);
+        }
+
+        &[class*='active'] {
+          color: $PRIMARY;
+          border-color: $PRIMARY;
+          font-weight: 600;
+
+          &:hover,
+          &:focus {
+            color: lighten($PRIMARY, 10);
+          }
+        }
+      }
+    }
+  }
+}
+
+.avatar-wrapper {
+  flex-align: center;
+
+  .avatar {
+    position: relative;
+    display: block;
+    color: $BORDER;
+
+    &:hover,
+    &:focus {
+      color: darken($BORDER, 10);
+    }
+
+    .avatar-image {
+      width: 45px;
+      height: 45px;
+      overflow: hidden;
+      -webkit-border-radius: 50%;
+      -moz-border-radius: 50%;
+      border-radius: 50%;
+      margin-right: 20px;
+
+      img {
+        min-height: 45px;
+        width: 100%;
+      }
+    }
+
+    span {
+      position: absolute;
+      top: 50%;
+      right: 0;
+      margin-top: -7px;
+    }
+  }
 }

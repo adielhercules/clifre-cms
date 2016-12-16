@@ -4,9 +4,7 @@ const STORAGE_KEY = 'clifre-vendor';
 
 export const remember = store => {
   function persist() {
-    localStorage.setItem(STORAGE_KEY, JSON.stringify(store.getState())).catch(e => {
-      console.warn('Could not write state to localStorage:', e);
-    });
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(store.getState()));
   }
 
   return next => action => {

@@ -5,7 +5,7 @@
  * @return {string} String with first letter capitalized
  */
 export const capitalize = (str) => {
-  return str.charAt(0).toUpperCase() + str.substr(1)
+  return str.charAt(0).toUpperCase() + str.substr(1);
 };
 
 /**
@@ -16,5 +16,5 @@ export const capitalize = (str) => {
  * @return {number} Clamped value
  */
 export const clamp = (value, min, max) => {
-  return Math.min(Math.max(value, min), max)
+  return Math.min(Math.max(value, min), max);
 };

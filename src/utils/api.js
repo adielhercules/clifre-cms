@@ -2,7 +2,7 @@
 
 const PROD_HOST = 'https://prod-api.herokuapp.com';
 const DEV_HOST = 'http://localhost:3000';
-export const HOST = __DEV__ ? DEV_HOST : PROD_HOST;
+export const HOST = process.env.NODE_ENV === 'development' ? DEV_HOST : PROD_HOST;
 
 export function genOptions(method, data, authorization, extraHeaders) {
   method = method.toUpperCase();

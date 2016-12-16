@@ -6,6 +6,8 @@ import { Provider } from 'react-redux';
 import { Router, browserHistory } from 'react-router';
 import fonts from 'google-fonts';
 import 'normalize.css';
+import '@blueprintjs/core/dist/blueprint.css';
+import 'flexboxgrid';
 
 import './style/main.sheet.scss';
 
