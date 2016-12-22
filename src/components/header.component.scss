@@ -3,8 +3,9 @@
 
 .header {
   height: 70px;
-  background-color: #fff;
-  box-shadow: 0 0 0 1px rgba(16, 22, 26, 0.1), 0 1px 1px rgba(16, 22, 26, 0.2);
+  background-color: $PRIMARY;
+  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.1),
+              0 1px 1px rgba(0, 0, 0, 0.2);
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -37,7 +38,7 @@
 
   &,
   &:hover {
-    color: $PRIMARY;
+    color: #fff;
     text-decoration: none;
   }
 }
@@ -93,12 +94,15 @@
     -webkit-border-radius: 3px;
     -moz-border-radius: 3px;
     border-radius: 3px;
+    background-color: transparent;
+
 
     &:focus {
       outline: none;
-      box-shadow: 0 0 0 1px #137cbd,
-                  0 0 0 3px rgba(19, 124, 189, 0.3),
-                  inset 0 1px 1px rgba(16, 22, 26, 0.2)
+      box-shadow: 0 0 0 1px #bd9113,
+                  0 0 0 3px rgba(189, 145, 19, 0.3),
+                  inset 0 1px 1px rgba(26, 25, 16, 0.2);
+      background-color: #f7c156;
     }
 
     &:focus + label,
@@ -140,11 +144,51 @@
         }
       }
 
+      &.add-item {
+        position: relative;
+        margin-left: 15px;
+
+        @media screen and (max-width: 480px) {
+          display: none;
+        }
+
+        a {
+          display: block;
+          height: 50px;
+          width: 50px;
+          background-color: #fff;
+          border-radius: 50%;
+          padding: 0;
+          line-height: 50px;
+          font-size: 2em;
+          text-align: center;
+          margin: 8px 0 0;
+          transition:  transform 0.2s, opacity 0.2s;
+
+          @media screen and (max-width: 800px) {
+            margin-top: 0;
+          }
+
+          &,
+          &:hover,
+          &:focus {
+            color: $PRIMARY;
+            text-decoration: none;
+          }
+
+          &:hover,
+          &:focus {
+            transform: scale(1.05);
+            opacity: 0.9;
+          }
+        }
+      }
+
       &.separator {
         position: relative;
         height: 25px;
         width: 1px;
-        background-color: #dfdfdf;
+        background-color: $BORDER;
         align-self: center;
         margin: 0 15px;
       }
@@ -160,20 +204,21 @@
         color: $TAB_LINK_COLOR;
         text-decoration: none;
         border-bottom: 3px solid transparent;
+        white-space: nowrap;
 
         &:hover,
         &:focus {
-          color: darken($TAB_LINK_COLOR, 20);
+          color: darken($TAB_LINK_COLOR, 5);
         }
 
         &[class*='active'] {
-          color: $PRIMARY;
-          border-color: $PRIMARY;
+          color: $TAB_LINK_COLOR;
+          border-color: $TAB_LINK_COLOR;
           font-weight: 600;
 
           &:hover,
           &:focus {
-            color: lighten($PRIMARY, 10);
+            color: lighten($TAB_LINK_COLOR, 5);
           }
         }
       }
@@ -187,11 +232,11 @@
   .avatar {
     position: relative;
     display: block;
-    color: $BORDER;
+    color: #fff;
 
     &:hover,
     &:focus {
-      color: darken($BORDER, 10);
+      color: darken(#fff, 5);
     }
 
     .avatar-image {
@@ -215,5 +260,11 @@
       right: 0;
       margin-top: -7px;
     }
+  }
+}
+
+[class*="item-visible-mobile"] {
+  @media screen and (min-width: 481px) {
+    display: none;
   }
 }

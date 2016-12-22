@@ -59,6 +59,16 @@ class Header extends Component {
       </Menu>
     );
 
+    const popoverAddItemContent = (
+      <Menu>
+        <MenuItem
+          iconName="user"
+          onClick={this.handleClick}
+          href="/dashboard/add"
+          text="Agregar usuario" />
+      </Menu>
+    );
+
     const mobileMenuContent = (
       <Menu>
         <MenuItem
@@ -71,6 +81,13 @@ class Header extends Component {
           onClick={this.handleClick}
           href="/dashboard/settings/card"
           text="Ajustes de tarjeta" />
+        <MenuDivider title="Agregar" className="item-visible-mobile" />
+        <MenuItem
+          className="item-visible-mobile"
+          iconName="user"
+          onClick={this.handleClick}
+          href="/dashboard/settings/add"
+          text="Agregar usuario" />
       </Menu>
     );
 
@@ -119,13 +136,22 @@ class Header extends Component {
                   </Popover>
                 </li>
 
+                <li styleName="add-item">
+                  <Popover content={popoverAddItemContent}
+                           position={Position.BOTTOM}>
+                    <Link to="javascript:;" onClick={ e => e.preventDefault() }>
+                      <span className="pt-icon-plus" />
+                    </Link>
+                  </Popover>
+                </li>
+
                 <li styleName="separator" />
 
                 <li styleName="user-menu">
                   <Popover content={popoverContent}
                            position={Position.BOTTOM_RIGHT}>
                     <div styleName="avatar-wrapper">
-                      <Link styleName="avatar">
+                      <Link styleName="avatar" to="javascript:;" onClick={ e => e.preventDefault() }>
                         <div styleName="avatar-image">
                           <img src={require('./johndoe.jpg')} alt=""/>
                         </div>
