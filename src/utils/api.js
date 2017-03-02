@@ -1,7 +1,7 @@
 'use strict';
 
 const PROD_HOST = 'https://prod-api.herokuapp.com';
-const DEV_HOST = 'http://localhost:3000';
+const DEV_HOST = 'https://clifre.heroku.com';
 export const HOST = process.env.NODE_ENV === 'development' ? DEV_HOST : PROD_HOST;
 
 export function genOptions(method, data, authorization, extraHeaders) {
@@ -43,6 +43,22 @@ export function route(path) {
 
 export function fetchRequest(url, options) {
   return fetch(url, options)
+    .then(isSuccessful)
+    .then(getJson);
+}
+
+
+const mockResponse = (status = 200, body = {}) => {
+  return new Response(JSON.stringify(body), { status });
+};
+
+export function fetchMockRequest(url, options, result = [200, { success: true }]) {
+  return new Promise(resolve => {
+      setTimeout(() => {
+        const [status = 200, body = { success: true }] = result;
+        resolve(mockResponse(status, body));
+      }, 500);
+    })
     .then(isSuccessful)
     .then(getJson);
 }

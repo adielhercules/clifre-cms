@@ -1,18 +1,20 @@
 import { createReducer } from 'redux-create-reducer';
 import {
-  AUTHENTICATED
+  USER_FETCHED,
 } from '../actions';
 
 const initialState = {
-  authenticated: false,
-  registered: false,
-  token: null
+  name: 'Anonymous',
+  email: '',
+  id: 0,
+  birtdate: '',
+  avatar: ''
 };
 
 const events = {
-  [AUTHENTICATED]: (state, { token }) => {
-    return { ...state, authenticated: true, token };
-  }
+  [USER_FETCHED]: (state, { user }) => {
+    return { ...state, ...user };
+  },
 };
 
 export default createReducer(initialState, events);

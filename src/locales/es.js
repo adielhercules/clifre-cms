@@ -11,4 +11,13 @@ export default {
   seals_add: 'Asignar',
   seals_latest_title: 'Ultimos sellos asignados',
   redeem_card_title: 'Canjear tarjeta',
+  signin: 'Iniciar Sesi&oacute;on',
+  signup: 'Crear una cuenta',
+  name: 'Nombre',
+  email: 'Correo',
+  password: 'Clave',
+  required: 'Requerido',
+  cancel: 'Cancelar',
+  create: 'Crear',
+  account: 'cuenta',
 };

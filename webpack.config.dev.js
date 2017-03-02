@@ -56,19 +56,19 @@ export default {
       {test: /\.svg(\?v=\d+\.\d+\.\d+)?$/, loader: 'url?limit=10000&mimetype=image/svg+xml'},
       {test: /\.(jpe?g|png|gif)$/i, loader: 'file?name=[name].[ext]'},
       {test: /\.ico$/, loader: 'file?name=[name].[ext]'},
-      { test: /\.component\.scss$/,
+      /*{ test: /\.component\.scss$/,
         loader: ExtractTextPlugin.extract(
           'style?sourceMap',
           'css?sourceMap&modules&importLoaders=1&localIdentName=[name]__[local]__[hash:base64:5]!postcss!sass?sourceMap',
         )
-      },
+      },*/
       {
         test: /\.css$/,
         loader: ExtractTextPlugin.extract(
           'css'
         )
       },
-      {test: /\.sheet\.scss$/, loader: ExtractTextPlugin.extract(
+      {test: /\.scss$/, loader: ExtractTextPlugin.extract(
         'style?sourceMap',
         'css?sourceMap!postcss!sass?sourceMap',
       )},
