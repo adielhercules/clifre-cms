@@ -10,7 +10,6 @@ import createAccount from '../../containers/account/actions/create-account';
 class Signup extends Component {
   state = {
     canSubmit: false,
-    avatar: null,
   }
 
   submit = () => {
@@ -33,45 +32,6 @@ class Signup extends Component {
     });
   }
 
-  getAvatarData = (e) => {
-    let reader = new FileReader();
-    let file = e.target.files[0];
-
-    reader.onloadend = () => {
-      this.setState({
-        avatar: reader.result
-      });
-
-      this.props.dispatch({
-        type: '@@redux-form/CHANGE',
-        meta: {
-            form: 'signup',
-            field: 'avatar',
-            touch: false,
-            persistentSubmitErrors: false,
-        },
-        payload: reader.result,
-      });
-    };
-
-    reader.readAsDataURL(file);
-  }
-
-  removeAvatar = () => {
-    this.setState({ avatar: null });
-
-    this.props.dispatch({
-        type: '@@redux-form/CHANGE',
-        meta: {
-            form: 'signup',
-            field: 'avatar',
-            touch: true,
-            persistentSubmitErrors: false,
-        },
-        payload: '',
-    });
-  }
-
   renderField = ({ input, label, type, meta: { touched, error, warning } }) => (
     <label className="pt-label">
       { label }
@@ -81,38 +41,6 @@ class Signup extends Component {
         {touched && ((error && <span>{error}</span>) || (warning && <span>{warning}</span>))}
       </div>
     </label>
-  )
-
-  renderUploadField = () => (
-    <AvatarContainer>
-      {
-        !this.state.avatar && (
-          <div className="file-input">
-            <label className="pt-file-upload">
-              <input
-                className="pt-input"
-                type="file"
-                onChange={e => {
-                  this.getAvatarData(e);
-                }}
-              />
-              <span className="pt-file-upload-input">Select a file...</span>
-            </label>
-          </div>
-        )
-      }
-      {
-        this.state.avatar && (
-          <div className="file-preview">
-            <div className="avatar">
-              <img src={this.state.avatar} alt=""/>
-            </div>
-            <Button onClick={this.removeAvatar}>Seleccionar otra</Button>
-            <div className="clearfix"></div>
-          </div>
-        )
-      }
-    </AvatarContainer>
   )
 
   render() {
@@ -168,15 +96,6 @@ class Signup extends Component {
             validate={ [validations.required] }
           />
 
-          { this.renderUploadField() }
-
-          <Field
-            name="avatar"
-            component={ this.renderField }
-            type="hidden"
-            validate={ [validations.required] }
-          />
-
           <Button
               intent={ Intent.PRIMARY }
               onClick={ this.submit }
@@ -211,29 +130,3 @@ const mapActions = {
 export default connect(mapState, mapActions)(reduxForm({
   form: 'signup'
 })(Signup));
-
-const AvatarContainer = styled.div`
-  position: relative;
-  margin-bottom: 20px;
-
-  .clearfix {
-    clear: both;
-  }
-
-  .file-preview {
-    .avatar {
-      float: left;
-      margin-right: 10px;
-      width: 30px;
-      height: 30px;
-      border-radius: 50%;
-      overflow: hidden;
-
-      img {
-        min-width: 100%;
-        min-height: 100%;
-        max-width: 120%;
-      }
-    }
-  }
-`;

@@ -1,7 +1,7 @@
 'use strict';
 
 const PROD_HOST = 'https://prod-api.herokuapp.com';
-const DEV_HOST = 'https://clifre.heroku.com';
+const DEV_HOST = 'https://clifre.herokuapp.com';
 export const HOST = process.env.NODE_ENV === 'development' ? DEV_HOST : PROD_HOST;
 
 export function genOptions(method, data, authorization, extraHeaders) {

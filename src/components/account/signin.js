@@ -5,7 +5,7 @@ import { Field, reduxForm } from 'redux-form';
 import { Button, Intent } from "@blueprintjs/core";
 
 import LocaleMessages from '../../utils/locale';
-import login from '../../containers/account/actions/create-account';
+import login from '../../containers/account/actions/login';
 
 class Signin extends Component {
   state = {

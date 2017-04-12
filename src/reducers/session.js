@@ -1,6 +1,6 @@
 import { createReducer } from 'redux-create-reducer';
 import {
-  AUTHENTICATED
+  USER_AUTHENTICATION_SUCCESS
 } from '../actions';
 
 const initialState = {
@@ -10,7 +10,7 @@ const initialState = {
 };
 
 const events = {
-  [AUTHENTICATED]: (state, { token }) => {
+  [USER_AUTHENTICATION_SUCCESS]: (state, { token }) => {
     return { ...state, authenticated: true, token };
   }
 };

@@ -31,6 +31,7 @@
   "license": "MIT",
   "dependencies": {
     "@blueprintjs/core": "1.3.1",
+    "fbjs": "^0.8.12",
     "flexboxgrid": "6.3.1",
     "google-fonts": "1.0.0",
     "normalize.css": "^5.0.0",
@@ -44,6 +45,7 @@
     "react-redux": "4.4.5",
     "react-router": "2.8.1",
     "react-router-redux": "4.0.6",
+    "react-scrollchor": "^2.2.0",
     "redux": "3.6.0",
     "redux-create-reducer": "^1.1.1",
     "redux-form": "6.5.0",
