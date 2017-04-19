@@ -8,12 +8,14 @@
     "development": {
       "presets": [
         "react-hmre"
+      ],
+      "plugins": [
+        "jsx-control-statements"
       ]
     },
     "production": {
       "plugins": [
-        "transform-react-constant-elements",
-        "transform-react-remove-prop-types"
+        "jsx-control-statements"
       ]
     }
   }
